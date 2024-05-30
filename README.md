@@ -8,10 +8,10 @@ Future improvments will include I2C GPIO extender and a screen.
 
 **Current modbus devices implemented:**
 
--Dixell HVAC controller (XR series)
--ABB B24 Electricity Meter
--ABB Pulse Electricity Meter
--CHINT DTSU666 Electricity Meter
--Vision Battery Pack
--BSL-BAT Battery Pack
--Tibbo Temperature Probe
+- Dixell HVAC controller (XR series)
+- ABB B24 Electricity Meter
+- ABB Pulse Electricity Meter
+- CHINT DTSU666 Electricity Meter
+- Vision Battery Pack
+- BSL-BAT Battery Pack
+- Tibbo Temperature Probe
