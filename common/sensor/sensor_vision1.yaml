@@ -1,0 +1,299 @@
+  - platform: modbus_controller
+    modbus_controller_id: vision
+    name: "Vision 1 Voltage"
+    register_type: holding
+    address: 0x0000    ## 0000 address of the register inside the Modbus slave device
+    unit_of_measurement: "V"
+    value_type: U_WORD
+    register_count: 1
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+  
+  - platform: modbus_controller
+    modbus_controller_id: vision
+    name: "Vision 1 Current"
+    register_type: holding
+    address: 0x0001    ## 0001 address of the register inside the Modbus slave device
+    unit_of_measurement: "mA"
+    value_type: S_WORD
+    register_count: 1
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.01
+  
+  - platform: modbus_controller
+    modbus_controller_id: vision
+    name: "Vision 1 Cell Voltage 1"
+    register_type: holding
+    address: 0x0002    ## 0002-0017 address of the registers inside the Modbus slave device
+    unit_of_measurement: "V"
+    value_type: U_WORD
+    register_count: 1
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+  
+  - platform: modbus_controller
+    modbus_controller_id: vision
+    name: "Vision 1 Cell Voltage 2"
+    register_type: holding
+    address: 0x0003    ## 0002-0017 address of the registers inside the Modbus slave device
+    unit_of_measurement: "V"
+    value_type: U_WORD
+    register_count: 1
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+  
+  - platform: modbus_controller
+    modbus_controller_id: vision
+    name: "Vision 1 Cell Voltage 3"
+    register_type: holding
+    address: 0x0004    ## 0002-0017 address of the registers inside the Modbus slave device
+    unit_of_measurement: "V"
+    value_type: U_WORD
+    register_count: 1
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+  
+  - platform: modbus_controller
+    modbus_controller_id: vision
+    name: "Vision 1 Cell Voltage 4"
+    register_type: holding
+    address: 0x0005    ## 0002-0017 address of the registers inside the Modbus slave device
+    unit_of_measurement: "V"
+    value_type: U_WORD
+    register_count: 1
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+  
+  - platform: modbus_controller
+    modbus_controller_id: vision
+    name: "Vision 1 Cell Voltage 5"
+    register_type: holding
+    address: 0x0006    ## 0002-0017 address of the registers inside the Modbus slave device
+    unit_of_measurement: "V"
+    value_type: U_WORD
+    register_count: 1
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+  
+  - platform: modbus_controller
+    modbus_controller_id: vision
+    name: "Vision 1 Cell Voltage 6"
+    register_type: holding
+    address: 7    ## 0002-0017 address of the registers inside the Modbus slave device
+    unit_of_measurement: "V"
+    value_type: U_WORD
+    register_count: 1
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+  
+  - platform: modbus_controller
+    modbus_controller_id: vision
+    name: "Vision 1 Cell Voltage 7"
+    register_type: holding
+    address: 8    ## 0002-0017 address of the registers inside the Modbus slave device
+    unit_of_measurement: "V"
+    value_type: U_WORD
+    register_count: 1
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+  
+  - platform: modbus_controller
+    modbus_controller_id: vision
+    name: "Vision 1 Cell Voltage 8"
+    register_type: holding
+    address: 9    ## 0002-0017 address of the registers inside the Modbus slave device
+    unit_of_measurement: "V"
+    value_type: U_WORD
+    register_count: 1
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+  
+  - platform: modbus_controller
+    modbus_controller_id: vision
+    name: "Vision 1 Cell Voltage 9"
+    register_type: holding
+    address: 10    ## 0002-0017 address of the registers inside the Modbus slave device
+    unit_of_measurement: "V"
+    value_type: U_WORD
+    register_count: 1
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+  
+  - platform: modbus_controller
+    modbus_controller_id: vision
+    name: "Vision 1 Cell Voltage 10"
+    register_type: holding
+    address: 11    ## 0002-0017 address of the registers inside the Modbus slave device
+    unit_of_measurement: "V"
+    value_type: U_WORD
+    register_count: 1
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+  
+  - platform: modbus_controller
+    modbus_controller_id: vision
+    name: "Vision 1 Cell Voltage 11"
+    register_type: holding
+    address: 12    ## 0002-0017 address of the registers inside the Modbus slave device
+    unit_of_measurement: "V"
+    value_type: U_WORD
+    register_count: 1
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+  
+  - platform: modbus_controller
+    modbus_controller_id: vision
+    name: "Vision 1 Cell Voltage 12"
+    register_type: holding
+    address: 13    ## 0002-0017 address of the registers inside the Modbus slave device
+    unit_of_measurement: "V"
+    value_type: U_WORD
+    register_count: 1
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+  
+  - platform: modbus_controller
+    modbus_controller_id: vision
+    name: "Vision 1 Cell Voltage 13"
+    register_type: holding
+    address: 14    ## 0002-0017 address of the registers inside the Modbus slave device
+    unit_of_measurement: "V"
+    value_type: U_WORD
+    register_count: 1
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+  
+  - platform: modbus_controller
+    modbus_controller_id: vision
+    name: "Vision 1 Cell Voltage 14"
+    register_type: holding
+    address: 15    ## 0002-0017 address of the registers inside the Modbus slave device
+    unit_of_measurement: "V"
+    value_type: U_WORD
+    register_count: 1
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+  
+  - platform: modbus_controller
+    modbus_controller_id: vision
+    name: "Vision 1 Cell Voltage 15"
+    register_type: holding
+    address: 16    ## 0002-0017 address of the registers inside the Modbus slave device
+    unit_of_measurement: "V"
+    value_type: U_WORD
+    register_count: 1
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+  
+  - platform: modbus_controller
+    modbus_controller_id: vision
+    name: "Vision 1 Cell Voltage 16"
+    register_type: holding
+    address: 17    ## 0002-0017 address of the registers inside the Modbus slave device
+    unit_of_measurement: "V"
+    value_type: U_WORD
+    register_count: 1
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.01
+  
+  - platform: modbus_controller
+    modbus_controller_id: vision
+    name: "Vision 1 Temp of PCB"
+    register_type: holding
+    address: 18    ##  address of the registers inside the Modbus slave device
+    unit_of_measurement: "°C"
+    value_type: S_WORD
+    register_count: 1
+    accuracy_decimals: 2
+    #filters:
+    #  - multiply: 0.1
+  
+  - platform: modbus_controller
+    modbus_controller_id: vision
+    name: "Vision 1 Temp Ambient"
+    register_type: holding
+    address: 19    ##  address of the registers inside the Modbus slave device
+    unit_of_measurement: "°C"
+    value_type: S_WORD
+    register_count: 1
+    accuracy_decimals: 2
+    #filters:
+    #  - multiply: 0.1
+  
+  - platform: modbus_controller
+    modbus_controller_id: vision
+    name: "Vision 1 Temp Max"
+    register_type: holding
+    address: 20    ##  address of the registers inside the Modbus slave device
+    unit_of_measurement: "°C"
+    value_type: S_WORD
+    register_count: 1
+    accuracy_decimals: 2
+    #filters:
+    #  - multiply: 0.1
+  
+  - platform: modbus_controller
+    modbus_controller_id: vision
+    name: "Vision 1 Remaining capacity"
+    register_type: holding
+    address: 21    ##  address of the registers inside the Modbus slave device
+    unit_of_measurement: "AH"
+    value_type: S_WORD
+    register_count: 1
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+  
+  - platform: modbus_controller
+    modbus_controller_id: vision
+    name: "Vision 1 Max charging Current"
+    register_type: holding
+    address: 22    ##  address of the registers inside the Modbus slave device
+    unit_of_measurement: "A"
+    value_type: U_WORD
+    register_count: 1
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+  
+  - platform: modbus_controller
+    modbus_controller_id: vision
+    name: "Vision 1 SOH"
+    register_type: holding
+    address: 23    ##  address of the registers inside the Modbus slave device
+    unit_of_measurement: ""
+    value_type: U_WORD
+    register_count: 1
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+  
+  - platform: modbus_controller
+    modbus_controller_id: vision
+    name: "Vision 1 SOC"
+    register_type: holding
+    address: 24    ##  address of the registers inside the Modbus slave device
+    unit_of_measurement: ""
+    value_type: U_WORD
+    register_count: 1
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1

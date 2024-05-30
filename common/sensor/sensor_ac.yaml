@@ -1,0 +1,24 @@
+  - platform: modbus_controller
+    modbus_controller_id: ac
+    name: "AC Current Temp"
+    register_type: holding
+    address: 264
+    unit_of_measurement: "°C"
+    value_type: S_WORD
+    register_count: 1
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+  
+  - platform: modbus_controller
+    modbus_controller_id: ac
+    id: set_point
+    name: "AC Set Point"
+    register_type: holding
+    unit_of_measurement: "°C"
+    address: 1537
+    value_type: S_WORD
+    skip_updates: 5
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1

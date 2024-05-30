@@ -1,0 +1,97 @@
+  - platform: modbus_controller
+    modbus_controller_id: bsl1
+    name: "BSL-BAT 1 Battery Cell Overvoltage Alarm"
+    register_type: read
+    address: 9
+    bitmask: 1
+    
+  - platform: modbus_controller
+    modbus_controller_id: bsl1
+    name: "BSL-BAT 1 Low Cell Voltage Alarm"
+    register_type: read
+    address: 9
+    bitmask: 2
+    
+  - platform: modbus_controller
+    modbus_controller_id: bsl1
+    name: "BSL-BAT 1 Battery Pack Overvoltage Alarm"
+    register_type: read
+    address: 9
+    bitmask: 4
+    
+  - platform: modbus_controller
+    modbus_controller_id: bsl1
+    name: "BSL-BAT 1 Battery Pack Low Voltage Alarm"
+    register_type: read
+    address: 9
+    bitmask: 8
+    
+  - platform: modbus_controller
+    modbus_controller_id: bsl1
+    name: "BSL-BAT 1 Charging Overcurrent Alarm"
+    register_type: read
+    address: 9
+    bitmask: 16
+    
+  - platform: modbus_controller
+    modbus_controller_id: bsl1
+    name: "BSL-BAT 1 Discharging Overcurrent Alarm"
+    register_type: read
+    address: 9
+    bitmask: 32
+    
+  - platform: modbus_controller
+    modbus_controller_id: bsl1
+    name: "BSL-BAT 1 Charging High Temperature Alarm"
+    register_type: read
+    address: 9
+    bitmask: 256
+    
+  - platform: modbus_controller
+    modbus_controller_id: bsl1
+    name: "BSL-BAT 1 Discharging High Temperature Alarm"
+    register_type: read
+    address: 9
+    bitmask: 512
+    
+  - platform: modbus_controller
+    modbus_controller_id: bsl1
+    name: "BSL-BAT 1 Charging Low Temperature Alarm"
+    register_type: read
+    address: 9
+    bitmask: 1024
+    
+  - platform: modbus_controller
+    modbus_controller_id: bsl1
+    name: "BSL-BAT 1 Discharging Low Temperature Alarm"
+    register_type: read
+    address: 9
+    bitmask: 2048
+    
+  - platform: modbus_controller
+    modbus_controller_id: bsl1
+    name: "BSL-BAT 1 Environment High Temperature Alarm"
+    register_type: read
+    address: 9
+    bitmask: 4096
+    
+  - platform: modbus_controller
+    modbus_controller_id: bsl1
+    name: "BSL-BAT 1 Environment Low Temperature Alarm"
+    register_type: read
+    address: 9
+    bitmask: 8192
+    
+  - platform: modbus_controller
+    modbus_controller_id: bsl1
+    name: "BSL-BAT 1 MOSFET High Temperature Alarm"
+    register_type: read
+    address: 9
+    bitmask: 16384
+    
+  - platform: modbus_controller
+    modbus_controller_id: bsl1
+    name: "BSL-BAT 1 SOC Low Alarm"
+    register_type: read
+    address: 9
+    bitmask: 32768

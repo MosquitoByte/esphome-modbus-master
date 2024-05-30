@@ -1,0 +1,14 @@
+  - platform: modbus_controller
+    modbus_controller_id: ac
+    id: hystresis
+    name: "AC Hystresis"
+    unit_of_measurement: "°C"
+    address: 769
+    value_type: S_WORD
+    use_write_multiple: True
+    multiply: 10.0
+    skip_updates: 5
+    min_value: 1
+    max_value: 20
+    step: 0.1
+    mode: slider

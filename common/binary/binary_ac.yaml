@@ -1,0 +1,35 @@
+  - platform: modbus_controller
+    modbus_controller_id: ac
+    name: "AC Buzzer"
+    register_type: read
+    address: 0x0220
+  
+  - platform: modbus_controller
+    modbus_controller_id: ac
+    name: "AC Probe Error"
+    register_type: read
+    address: 0x0208
+  
+  - platform: modbus_controller
+    modbus_controller_id: ac
+    name: "AC High Value Alarm"
+    register_type: read
+    address: 0x020d
+  
+  - platform: modbus_controller
+    modbus_controller_id: ac
+    name: "AC Low Value Alarm"
+    register_type: read
+    address: 0x020e
+  
+  - platform: modbus_controller
+    modbus_controller_id: ac
+    name: "AC Severe Alarm"
+    register_type: read
+    address: 0x0211
+  
+  - platform: modbus_controller
+    modbus_controller_id: ac
+    name: "AC EEPROM Failure"
+    register_type: read
+    address: 0x0213
