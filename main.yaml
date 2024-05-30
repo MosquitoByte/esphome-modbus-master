@@ -1,0 +1,305 @@
+esphome:
+  name: "site-controller-5"
+  platform: ESP32
+  board: esp-wrover-kit
+
+preferences:
+  flash_write_interval: 5min
+  
+substitutions:
+  esp32tx: "17"
+  esp32rx: "5"
+  esp32flow: "33"
+  chint_addr: "5"
+  abb1_addr: "9"
+  abb2_addr: "6"
+  ac_addr: "17"
+  vision1_addr: "15" 
+  vision2_addr: "16"
+  vision3_addr: "23"
+  vision4_addr: "24"
+  vision5_addr: "25"
+  bsl1_addr: "40"
+  bsl2_addr: "41"
+  bsl3_addr: "42"
+  bsl4_addr: "43"
+  bsl5_addr: "44"
+  tibbo_addr: "1"
+  pulse_pin: "14"
+  device_ip: "192.168.1.36"
+  device_gateway: "192.168.1.1"
+  device_subnet: "255.255.255.0"
+  
+ethernet:
+  type: LAN8720
+  mdc_pin: GPIO23
+  mdio_pin: GPIO18
+  clk_mode: GPIO0_IN
+  phy_addr: 1
+  power_pin: GPIO16
+  manual_ip:                     
+    static_ip: $device_ip
+    gateway: $device_gateway
+    subnet: $device_subnet
+
+logger:
+  baud_rate: 0
+  level: DEBUG
+  logs:
+    component: ERROR
+
+debug:
+  update_interval: 5s
+
+web_server:
+    port: 80
+    version: 2
+    local: true
+    include_internal: false
+
+api:
+  reboot_timeout: 0s
+  services:
+    - service: set_pulse_total
+      variables:
+        new_pulse_total: int
+      then:
+        - pulse_counter.set_total_pulses:
+            id: pulse_power_meter
+            value: !lambda 'return new_pulse_total;'
+        
+ota:
+
+uart:
+  - id: mod_bus
+    tx_pin: $esp32tx
+    rx_pin: $esp32rx
+    baud_rate: 9600
+    stop_bits: 1
+    debug:
+      direction: BOTH
+      dummy_receiver: false
+      
+modbus:
+  # flow_control_pin: $esp32flow
+  uart_id: mod_bus
+  id: modbus1
+  send_wait_time: 300ms
+
+modbus_controller:
+
+### ModBus Tibbo Device Settings
+
+- id: tibbo
+  address: $tibbo_addr  
+  modbus_id: modbus1
+  update_interval: 30s
+  # command_throttle: 300ms
+  setup_priority: -10
+  offline_skip_updates: 5
+
+### ModBus Chint Device Settings
+
+- id: chint
+  address: $chint_addr  
+  modbus_id: modbus1
+  update_interval: 30s
+  # command_throttle: 300ms
+  setup_priority: -10
+  offline_skip_updates: 5
+
+### ModBus ABB1 Device Settings
+
+- id: abb
+  address: $abb1_addr  
+  modbus_id: modbus1
+  update_interval: 20s
+  command_throttle: 200ms
+  setup_priority: -10
+  offline_skip_updates: 5
+
+### ModBus ABB2 Device Settings
+
+- id: abb2
+  address: $abb2_addr 
+  modbus_id: modbus1
+  update_interval: 20s
+  command_throttle: 200ms
+  setup_priority: -10
+  offline_skip_updates: 5
+
+### AC Controller Device Settings
+
+- id: ac
+  address: $ac_addr     
+  modbus_id: modbus1
+  update_interval: 30s
+  command_throttle: 200ms
+  setup_priority: -10
+  offline_skip_updates: 5
+
+### Vision Battery Controller Device Settings
+
+- id: vision
+  address: $vision1_addr   
+  modbus_id: modbus1
+  update_interval: 30s 
+  command_throttle: 200ms
+  setup_priority: -10
+  offline_skip_updates: 5
+
+- id: vision2
+  address: $vision2_addr  
+  modbus_id: modbus1
+  update_interval: 30s
+  command_throttle: 200ms
+  setup_priority: -10
+  offline_skip_updates: 5
+ 
+### BSL-BAT Battery Controller Device Settings
+ 
+- id: bsl1
+  address: $bsl1_addr  
+  modbus_id: modbus1
+  update_interval: 30s 
+  command_throttle: 200ms
+  setup_priority: -10
+  offline_skip_updates: 5
+  
+- id: bsl2
+  address: $bsl2_addr  
+  modbus_id: modbus1
+  update_interval: 30s 
+  command_throttle: 200ms
+  setup_priority: -10
+  offline_skip_updates: 5
+
+### Sensors
+
+sensor:
+
+### Pulse Counter Sensors
+   
+  - platform: pulse_counter
+    pin:
+      number: $pulse_pin
+      inverted: true
+      mode:
+        input: true
+        pullup: true
+    unit_of_measurement: 'kW'
+    name: 'Pulse Power Meter'
+    id: pulse_power_meter
+    filters:
+      - multiply: 0.6  # (60s/100 pulses per kWh)
+    total:
+      unit_of_measurement: 'kWh'
+      name: 'Pulse Energy Meter'
+      id: pulse_energy_meter
+      device_class: energy
+      state_class: total_increasing
+      accuracy_decimals: 1
+      filters:
+      - multiply: 0.01  # (1/100 pulses per kWh)
+      #- lambda: |-
+      #    id(total_pulses) = id(pulse_energy_meter).raw_state;
+      #    return x * (1.0 / 100);
+          
+### Tibbo
+
+  - <<: !include common/sensor/sensor_tibbo.yaml
+
+### Chint
+
+  - <<: !include common/sensor/sensor_chint.yaml  
+
+### ABB Meter Sensor
+ 
+  - <<: !include common/sensor/sensor_abb1.yaml 
+  - <<: !include common/sensor/sensor_abb2.yaml
+
+### AC Control Sensor
+
+  - <<: !include common/sensor/sensor_ac.yaml 
+
+### Vision Battery Sensors
+  
+  - <<: !include common/sensor/sensor_vision1.yaml
+  - <<: !include common/sensor/sensor_vision2.yaml 
+ 
+### BSL-BAT Battery Controller Sensors
+  
+  - <<: !include common/sensor/sensor_bsl1.yaml
+  - <<: !include common/sensor/sensor_bsl2.yaml 
+
+### Other/Internal Sensors ###
+ 
+  - platform: uptime
+    name: Uptime Sensor
+    id: user_uptime
+    update_interval: 15s
+    internal: true
+
+### Numbers
+ 
+number:
+
+### AC Numbers
+
+  - <<: !include common/number/number_ac.yaml 
+ 
+### Switches
+ 
+switch:
+
+### AC Numbers
+
+  - <<: !include common/switch/switch_ac.yaml 
+
+### Binary Sensors
+ 
+binary_sensor:
+
+### AC Binary Sensors
+
+  - <<: !include common/binary/binary_ac.yaml 
+
+### BSL-BAT Binary Sensors
+ 
+  - <<: !include common/binary/binary_bsl1.yaml
+  - <<: !include common/binary/binary_bsl2.yaml 
+
+### Text Sensors for screen and debugging
+
+text_sensor:
+
+  - platform: ethernet_info
+    ip_address:
+      name: IP Address
+      id: ip_address
+
+  - platform: debug
+    reset_reason:
+      name: "Reset Reason"
+
+  - platform: template
+    name: Formatted Uptime
+    id: str_uptime
+    lambda: |-
+      int seconds = (id(user_uptime).state);
+      int days = seconds / (24 * 3600);
+      seconds = seconds % (24 * 3600); 
+      int hours = seconds / 3600;
+      seconds = seconds % 3600;
+      int minutes = seconds /  60;
+      seconds = seconds % 60;
+      return { (String(days) +"d " + String(hours) +"h " + String(minutes) +"m "+ String(seconds) +"s").c_str() };
+    #icon: mdi:clock-start
+    update_interval: 15s
+
+button:
+  
+  - platform: restart
+    name: "Restart"
+
+#captive_portal:
