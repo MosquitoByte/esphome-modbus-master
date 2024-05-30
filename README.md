@@ -16,4 +16,4 @@ Future improvments will include I2C GPIO extender and a screen.
 - BSL-BAT Battery Pack
 - Tibbo Temperature Probe
 
-(/image.jpg)
+![Image of the device](/image.jpg)
